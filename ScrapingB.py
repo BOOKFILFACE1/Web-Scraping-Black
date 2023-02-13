@@ -4,6 +4,8 @@ import random
 import time
 from bs4 import BeautifulSoup
 
+### ES OBLIGATORIO INSTALAR EL MODULO "BeautifulSoup", para eso, ejecuta el siguiente codigo antes de ejecutar el codigo "pip install beautifulsoup4" para instalar la version mas actual
+
 # Función para realizar la solicitud GET a la URL y obtener la página HTML
 def get_html(url):
     # Agregar un tiempo de espera aleatorio para evitar ser bloqueado por el servidor
@@ -23,21 +25,21 @@ def extract_data(html):
     # Crear un objeto BeautifulSoup a partir de la página HTML
     soup = BeautifulSoup(html, 'html.parser')
     # Buscar todos los elementos con la clase especificada
-    items = soup.find_all(class_="item")
+    items = soup.find_all(class_="vtex-search-result-3-x-galleryItem")                            ###ESTA LINEA DEBE SER MODIFICADA POR EL USUARIO
     # Inicializar una lista para almacenar los datos extraídos
     data = []
     # Iterar sobre cada elemento
     for item in items:
         # Extraer el título y el precio de cada elemento
-        title = item.find(class_="title").text.strip()
-        price = item.find(class_="price").text.strip()
+        title = item.find(class_="vtex-product-summary-2-x-productBrand").text.strip()               ###ESTA LINEA DEBE SER MODIFICADA POR EL USUARIO
+        price = item.find(class_="vtex-store-components-3-x-currencyContainer").text.strip()               ###ESTA LINEA DEBE SER MODIFICADA POR EL USUARIO
         # Agregar un diccionario con los datos extraídos a la lista
         data.append({"title": title, "price": price})
     # Devolver la lista de datos extraídos
     return data
 
 # URL a la que se realizará la solicitud GET
-url = "https://www.example.com/items"
+url = "https://www.walmart.com.sv/electronica"               ###ESTA LINEA DEBE SER MODIFICADA POR EL USUARIO
 
 # Obtener la página HTML
 html = get_html(url)
