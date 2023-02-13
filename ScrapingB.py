@@ -4,7 +4,6 @@ import random
 import time
 from bs4 import BeautifulSoup
 
-### ES OBLIGATORIO INSTALAR EL MODULO "BeautifulSoup", para eso, ejecuta el siguiente codigo antes de ejecutar el codigo "pip install beautifulsoup4" para instalar la version mas actual
 
 # Función para realizar la solicitud GET a la URL y obtener la página HTML
 def get_html(url):
